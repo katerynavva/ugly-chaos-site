@@ -1,0 +1,256 @@
+body {
+
+margin:0;
+
+background:#111;
+
+font-family:Comic Sans MS;
+
+}
+
+/* HEADER */
+
+.grid-header {
+
+background:red;
+
+color:white;
+
+text-align:center;
+
+padding:20px;
+
+border-bottom:6px solid yellow;
+
+}
+
+.grid-header a {
+
+color:white;
+
+text-decoration:none;
+
+display:block;
+
+margin-top:10px;
+
+}
+
+/* MAIN GRID */
+
+.grid-container {
+
+display:grid;
+
+
+grid-template-columns:
+80px
+80px
+120px
+80px
+120px
+60px;
+
+
+
+grid-template-rows:
+100px
+80px
+80px
+120px
+80px
+100px;
+
+gap:5px;
+
+padding:20px;
+
+height:calc(100vh - 120px);
+
+}
+
+/* BASE BOX */
+
+.box {
+
+background:#ddd;
+
+border:5px solid black;
+
+transition:0.3s;
+
+}
+
+/* HOVER */
+
+.box:hover {
+
+transform:scale(1.05);
+
+}
+
+/* COLOR BLOCKS */
+
+/* LEFT YELLOW TALL */
+
+.yellow1 {
+
+background:yellow;
+
+grid-column:1;
+
+grid-row:1 / 4;
+
+}
+
+/* RED BLOCK */
+
+.red1 {
+
+background:red;
+
+grid-column:2;
+
+grid-row:1 / 3;
+
+}
+
+/* SMALL TOP WHITE */
+
+.white1 {
+
+grid-column:3 / 5;
+
+grid-row:1;
+
+}
+
+/* SECOND WHITE */
+
+.white2 {
+
+grid-column:3 / 5;
+
+grid-row:2;
+
+}
+
+/* RIGHT BIG WHITE */
+
+.white3 {
+
+grid-column:5;
+
+grid-row:1 / 4;
+
+}
+
+/* RIGHT EDGE WHITE */
+
+.white4 {
+
+grid-column:6;
+
+grid-row:1 / 6;
+
+}
+
+/* CENTER LEFT */
+
+.white5 {
+
+grid-column:1 / 3;
+
+grid-row:4 / 6;
+
+}
+
+/* CENTER MIDDLE */
+
+.white6 {
+
+grid-column:3 / 5;
+
+grid-row:4;
+
+}
+
+/* BLUE BLOCK */
+
+.blue1 {
+
+background:#1f4a8a;
+
+grid-column:4;
+
+grid-row:5;
+
+}
+
+/* SMALL YELLOW RIGHT */
+
+.yellow2 {
+
+background:yellow;
+
+grid-column:5;
+
+grid-row:5;
+
+}
+
+/* LOWER WHITE */
+
+.white7 {
+
+grid-column:3 / 5;
+
+grid-row:6;
+
+}
+
+/* BOTTOM LEFT */
+
+.white8 {
+
+grid-column:1 / 3;
+
+grid-row:6;
+
+}
+
+/* BOTTOM RIGHT */
+
+.white9 {
+
+grid-column:5;
+
+grid-row:6;
+
+}
+
+/* MOBILE FIX  */
+
+@media (max-width:768px) {
+
+.grid-container {
+
+grid-template-columns:1fr;
+
+grid-template-rows:auto;
+
+height:auto;
+
+}
+
+.box {
+
+grid-column:auto !important;
+
+grid-row:auto !important;
+
+height:120px;
+
+}
+
+}

@@ -1,5 +1,3 @@
-/* UNIVERSAL SELECTOR */
-
 * {
 
 margin:0;
@@ -8,15 +6,34 @@ box-sizing:border-box;
 
 }
 
-/* BODY — mobile first */
-
 body {
 
 font-family:Comic Sans MS;
 
-background:red;
+background:linear-gradient(
+45deg,
+red,
+yellow,
+lime,
+cyan,
+magenta
+);
 
-color:black;
+background-size:400% 400%;
+
+animation:bgMove 8s infinite;
+
+}
+
+/* BACKGROUND */
+
+@keyframes bgMove {
+
+0% { background-position:0% 50%; }
+
+50% { background-position:100% 50%; }
+
+100% { background-position:0% 50%; }
 
 }
 
@@ -40,35 +57,51 @@ position:sticky;
 
 top:0;
 
+z-index:999;
+
 }
 
-/* CHILD SELECTOR */
+.logo {
 
-nav > ul {
+font-size:24px;
+
+color:white;
+
+animation:shake 2s infinite;
+
+}
+
+@keyframes shake {
+
+0% { transform:rotate(-2deg); }
+
+50% { transform:rotate(2deg); }
+
+100% { transform:rotate(-2deg); }
+
+}
+
+/* BURGER */
+
+.burger {
+
+display:none;
+
+font-size:30px;
+
+cursor:pointer;
+
+color:white;
+
+}
+
+nav ul {
 
 display:flex;
 
 list-style:none;
 
 }
-
-/* ADJACENT SELECTOR */
-
-.logo + nav {
-
-transform:rotate(-1deg);
-
-}
-
-/* SIBLING SELECTOR */
-
-.logo ~ nav {
-
-border:3px solid white;
-
-}
-
-/* COMBINED SELECTOR */
 
 nav ul li a {
 
@@ -78,7 +111,7 @@ text-decoration:none;
 
 padding:10px;
 
-border:2px solid white;
+transition:0.3s;
 
 }
 
@@ -86,7 +119,7 @@ nav ul li a:hover {
 
 background:red;
 
-transform:scale(1.3);
+transform:scale(1.2);
 
 }
 
@@ -94,51 +127,51 @@ transform:scale(1.3);
 
 #hero {
 
-background:lime;
-
 padding:80px;
 
 position:relative;
 
-border:12px dotted blue;
+animation:fadeIn 2s;
 
 }
 
-/* PSEUDO ELEMENTS */
+@keyframes fadeIn {
 
-.hero-text::before {
+from {
 
-content:"🔥 ";
-
-}
-
-.hero-text::after {
-
-content:" 🔥";
+opacity:0;
+transform:translateY(50px);
 
 }
 
-/* PSEUDO CLASS */
+to {
 
-.card:nth-child(2) {
-
-background:orange;
+opacity:1;
+transform:translateY(0);
 
 }
 
-/* IMAGE */
+}
 
 .hero-img {
 
 width:250px;
 
-border:6px solid black;
-
 margin-top:20px;
+
+animation:float 3s infinite;
 
 }
 
-/* BUTTON */
+@keyframes float {
+
+0% { transform:translateY(0); }
+
+50% { transform:translateY(-15px); }
+
+100% { transform:translateY(0); }
+
+}
 
 .chaos-btn {
 
@@ -156,27 +189,26 @@ color:white;
 
 border:5px solid yellow;
 
+transition:0.4s;
+
 }
 
 .chaos-btn:hover {
 
 background:red;
 
+transform:rotate(5deg) scale(1.2);
+
+}
+
+.second {
+
+bottom:100px;
+background:blue;
+
 }
 
 /* ABOUT */
-
-#about {
-
-padding:60px;
-
-background:pink;
-
-border:15px double black;
-
-}
-
-/* FLEXBOX */
 
 .about-container {
 
@@ -184,13 +216,9 @@ display:flex;
 
 flex-wrap:wrap;
 
-justify-content:space-around;
-
-align-items:flex-start;
+gap:20px;
 
 }
-
-/* FLEX GROW */
 
 .card {
 
@@ -198,63 +226,25 @@ flex-grow:1;
 
 min-width:250px;
 
-margin:15px;
-
 padding:20px;
 
 background:cyan;
 
 border:6px solid green;
 
-position:relative;
+transition:0.4s;
 
 }
 
-.card img {
+.card:hover {
 
-width:100%;
+transform:scale(1.1) rotate(2deg);
 
-border:5px solid black;
-
-}
-
-/* AFTER */
-
-.special::after {
-
-content:"⭐";
-
-font-size:40px;
-
-position:absolute;
-
-top:-15px;
-
-right:-15px;
+background:orange;
 
 }
 
 /* SERVICES */
-
-#services {
-
-padding:60px;
-
-background:lightblue;
-
-}
-
-/* FLOAT */
-
-.float {
-
-float:right;
-
-background:red;
-
-color:white;
-
-}
 
 .service {
 
@@ -266,17 +256,25 @@ margin:20px;
 
 padding:20px;
 
-border:6px solid black;
-
 background:white;
+
+transition:0.4s;
 
 }
 
-.service img {
+.service:hover {
 
-width:100%;
+transform:scale(1.2);
 
-border:4px solid red;
+background:red;
+
+color:white;
+
+}
+
+.float {
+
+float:right;
 
 }
 
@@ -298,7 +296,7 @@ width:100%;
 
 }
 
-/* FIXED ELEMENT */
+/* BANNER */
 
 .fixed-banner {
 
@@ -314,34 +312,67 @@ padding:15px;
 
 border:5px solid black;
 
-transform:rotate(-10deg);
+animation:spin 6s infinite linear;
 
 }
 
-/* MEDIA QUERIES — mobile first */
+@keyframes spin {
 
-@media (min-width:600px) {
+from { transform:rotate(0deg); }
 
-body {
-
-background:linear-gradient(
-45deg,
-red,
-yellow,
-lime,
-cyan,
-magenta
-);
+to { transform:rotate(360deg); }
 
 }
 
+/* MOBILE */
+
+@media (max-width:768px) {
+
+.burger {
+
+display:block;
+
 }
 
-@media (min-width:900px) {
+nav ul {
 
-.card {
+display:none;
 
-transform:rotate(-2deg);
+flex-direction:column;
+
+background:black;
+
+position:absolute;
+
+top:70px;
+
+right:0;
+
+width:200px;
+
+}
+
+#menu-toggle:checked + .burger + nav ul {
+
+display:flex;
+
+}
+
+.about-container {
+
+flex-direction:column;
+
+}
+
+.hero-img {
+
+width:150px;
+
+}
+
+.float {
+
+float:none;
 
 }
 
